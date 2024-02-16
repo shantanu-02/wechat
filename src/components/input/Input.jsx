@@ -17,14 +17,16 @@ const Input = () => {
   const { data } = useContext(ChatContext);
 
   const handleSend = async () => {
+    if (!text.trim()) {
+      return;
+    }
+  
     if (img) {
       const storageRef = ref(storage, uuid());
-
       const uploadTask = uploadBytesResumable(storageRef, img);
-
+  
       uploadTask.on(
         (error) => {
-          //TODO:Handle Error
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -42,7 +44,7 @@ const Input = () => {
       );
     } else {
       await updateDoc(doc(db, "chats", data.chatId), {
-       messages: arrayUnion({
+        messages: arrayUnion({
           id: uuid(),
           text,
           senderId: currentUser.uid,
@@ -50,29 +52,34 @@ const Input = () => {
         }),
       });
     }
-
+  
     await updateDoc(doc(db, "userChats", currentUser.uid), {
       [data.chatId + ".lastMessage"]: {
         text,
       },
       [data.chatId + ".date"]: serverTimestamp(),
     });
-
+  
     await updateDoc(doc(db, "userChats", data.user.uid), {
       [data.chatId + ".lastMessage"]: {
         text,
       },
       [data.chatId + ".date"]: serverTimestamp(),
     });
-
+  
     setText("");
     setImg(null);
   };
+  const handleKey = (e) => {
+    e.code === "Enter" && handleSend();
+  };
+
   return (
     <div className="input">
       <input
         type="text"
         placeholder="Type something..."
+        onKeyDown={handleKey}
         onChange={(e) => setText(e.target.value)}
         value={text}
       />

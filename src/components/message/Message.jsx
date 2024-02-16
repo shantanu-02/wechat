@@ -1,9 +1,10 @@
-import "./message.scss"
+import "./message.scss";
 import React, { useContext, useEffect, useRef } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { ChatContext } from "../../context/ChatContext";
+import moment from "moment";
 
-const Message = ({message}) => {
+const Message = ({ message }) => {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
 
@@ -12,6 +13,9 @@ const Message = ({message}) => {
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [message]);
+
+  const time = message.date.toDate();
+  const date = moment(time).fromNow()
 
   return (
     <div
@@ -27,7 +31,7 @@ const Message = ({message}) => {
           }
           alt=""
         />
-        <span>just now</span>
+        <span>{date}</span>
       </div>
       <div className="messageContent">
         <p>{message.text}</p>
@@ -35,6 +39,6 @@ const Message = ({message}) => {
       </div>
     </div>
   );
-}
+};
 
-export default Message
+export default Message;
