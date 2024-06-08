@@ -8,6 +8,7 @@
   - #### User1: Email: test1@gmail.com Password: test123
   - #### User2: Email: test2@gmail.com Password: test123
   - #### Search for users by name for example shantanu, saurav, shivendra, etc.
+  - #### While registering new user password's length should be at least 6 characters.
 
 ## Languages and frameworks used:
 
