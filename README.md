@@ -1,6 +1,6 @@
 # WeChat
 
-- Demo: [WeChat app live link](wechat-ashen.vercel.app)
+- Demo: [WeChat app live link](https://wechat-ashen.vercel.app)
 
   This ToDo App is a simple yet effective tool to manage your tasks efficiently. Whether you're organizing your workday, planning a project, or simply keeping track of your errands, this app provides an intuitive interface to create and manage your to-do lists seamlessly.
 
