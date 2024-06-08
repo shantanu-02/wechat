@@ -5,7 +5,7 @@
   This ToDo App is a simple yet effective tool to manage your tasks efficiently. Whether you're organizing your workday, planning a project, or simply keeping track of your errands, this app provides an intuitive interface to create and manage your to-do lists seamlessly.
 
   - ## Test users:
-  - #### User1: Email: test@gmail.com Password: test123
+  - #### User1: Email: test1@gmail.com Password: test123
   - #### User2: Email: test2@gmail.com Password: test123
   - #### Search for users by name for example shantanu, saurav, shivendra, etc.
 
